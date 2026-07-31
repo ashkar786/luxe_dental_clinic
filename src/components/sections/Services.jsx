@@ -1,20 +1,35 @@
-import { SERVICES } from '../../data/content'
+import {
+  Activity,
+  Award,
+  Brush,
+  Gem,
+  Smile,
+  Sparkles,
+  Stethoscope,
+  Syringe,
+  Zap,
+} from 'lucide-react'
+import { useLanguage } from '../../i18n/LanguageContext'
 import { FadeIn } from '../ui/FadeIn'
 import { SectionHeading } from '../ui/SectionHeading'
 
+const ICONS = [Stethoscope, Activity, Gem, Sparkles, Smile, Syringe, Brush, Award, Zap]
+
 export function Services() {
+  const { t } = useLanguage()
+
   return (
     <section id="services" className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Our Services"
-          title="Advanced Care for Every Smile"
-          description="From preventive checkups to cosmetic transformations and implant dentistry, every treatment is delivered with precision and care."
+          eyebrow={t.services.eyebrow}
+          title={t.services.title}
+          description={t.services.description}
         />
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, index) => {
-            const Icon = service.icon
+          {t.services.items.map((service, index) => {
+            const Icon = ICONS[index]
             return (
               <FadeIn key={service.title} delay={index * 0.05}>
                 <article className="group h-full rounded-3xl border border-primary/8 bg-bg p-6 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-lift">

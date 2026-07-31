@@ -1,31 +1,32 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import { FAQS } from '../../data/content'
+import { useLanguage } from '../../i18n/LanguageContext'
 import { FadeIn } from '../ui/FadeIn'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function FAQ() {
+  const { t, lang } = useLanguage()
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
     <section id="faq" className="bg-white py-20 md:py-28">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="FAQ"
-          title="Answers Before Your Visit"
-          description="Clear guidance on appointments, treatments, and emergency care so you can book with confidence."
+          eyebrow={t.faq.eyebrow}
+          title={t.faq.title}
+          description={t.faq.description}
         />
 
-        <div className="space-y-3">
-          {FAQS.map((faq, index) => {
+        <div className="space-y-3" key={lang}>
+          {t.faq.items.map((faq, index) => {
             const isOpen = openIndex === index
             return (
               <FadeIn key={faq.question} delay={index * 0.04}>
                 <div className="overflow-hidden rounded-2xl border border-primary/10 bg-bg shadow-soft">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-start"
                     aria-expanded={isOpen}
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
                   >

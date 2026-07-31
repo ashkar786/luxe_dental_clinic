@@ -6,8 +6,8 @@ import drSeharBanuSadatulla from '../images/Dr_Sehar_Banu_Sadatulla.png'
 import drMohamedAbosekina from '../images/Dr_Mohamed_Abosekina.png'
 
 export const WHATSAPP_URL = 'https://wa.me/97143580885'
-export const PHONE_TEL = 'tel:+97143580885'
-export const PHONE_DISPLAY = '+971 4 358 0885'
+export const PHONE_TEL = 'tel:+971 54 358 0995'
+export const PHONE_DISPLAY = '+971 54 358 0995'
 
 export const DOCTOR_IMAGES = [
   drTamimTulimat,

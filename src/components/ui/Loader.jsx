@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 export function Loader() {
+  const { t } = useLanguage()
+
   return (
     <motion.div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-bg"
@@ -21,8 +24,8 @@ export function Loader() {
             />
           </svg>
         </motion.div>
-        <p className="font-display text-2xl font-semibold text-secondary">Luxe Dental Clinic</p>
-        <p className="text-xs tracking-[0.25em] text-primary uppercase">Preparing your smile journey</p>
+        <p className="font-display text-2xl font-semibold text-secondary">{t.hero.brand}</p>
+        <p className="text-xs tracking-[0.18em] text-primary uppercase">{t.loader}</p>
       </div>
     </motion.div>
   )

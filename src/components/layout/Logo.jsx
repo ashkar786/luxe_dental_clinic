@@ -1,6 +1,6 @@
-export function Logo({ dark = true, className = '' }) {
-  return (
-    <a href="#home" className={`group flex items-center gap-3 ${className}`} aria-label="Luxe Dental Clinic home">
+export function Logo({ dark = true, className = '', asSpan = false }) {
+  const content = (
+    <>
       <span className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-secondary shadow-soft">
         <svg viewBox="0 0 32 32" className="h-6 w-6" aria-hidden="true">
           <path
@@ -32,6 +32,20 @@ export function Logo({ dark = true, className = '' }) {
           Dubai, UAE
         </span>
       </span>
+    </>
+  )
+
+  if (asSpan) {
+    return <span className={`group flex items-center gap-3 ${className}`}>{content}</span>
+  }
+
+  return (
+    <a
+      href="#home"
+      className={`group flex items-center gap-3 ${className}`}
+      aria-label="Luxe Dental Clinic home"
+    >
+      {content}
     </a>
   )
 }

@@ -1,11 +1,21 @@
+import drTamimTulimat from '../images/Dr_Tamim_Tulimat.png'
+import drAkramMirgani from '../images/Dr_Akram_Mirgani.png'
+import drSampadaBakshi from '../images/Dr_Sampada_Bakshi.png'
+import drMostafaKhalaf from '../images/Dr_Mostafa_Khalaf.png'
+import drSeharBanuSadatulla from '../images/Dr_Sehar_Banu_Sadatulla.png'
+import drMohamedAbosekina from '../images/Dr_Mohamed_Abosekina.png'
+
 export const WHATSAPP_URL = 'https://wa.me/97143580885'
 export const PHONE_TEL = 'tel:+97143580885'
 export const PHONE_DISPLAY = '+971 4 358 0885'
 
 export const DOCTOR_IMAGES = [
-  'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80',
+  drTamimTulimat,
+  drAkramMirgani,
+  drSampadaBakshi,
+  drMostafaKhalaf,
+  drSeharBanuSadatulla,
+  drMohamedAbosekina,
 ]
 
 export const GALLERY_IMAGES = [

@@ -102,24 +102,44 @@ export const translations = {
       title: 'Meet Our Experienced Doctors',
       description:
         'A dedicated team of dental professionals committed to precise treatment, clear communication, and lasting results.',
+      showMore: 'Show more',
+      showLess: 'Show less',
       items: [
         {
           name: 'Dr. Tamim Tulimat',
-          role: 'Endodontist & Implantologist',
+          role: 'Endodontist, Implantologist, Orthodontist & Periodontist',
           experience: '20 Years Experience',
-          bio: 'Specializes in complex root canal therapy and implant-supported restorations with a calm, patient-first approach.',
+          bio: 'Doctor of Dental Surgery graduate with expertise across endodontics, implants, orthodontics, and periodontics for comprehensive care.',
         },
         {
           name: 'Dr. Akram Mirgani',
           role: 'General Dentist',
           experience: '8 Years Experience',
-          bio: 'Focused on preventive and restorative dentistry, helping families maintain healthy smiles at every stage of life.',
+          bio: 'Dr. Akram Mirgani is a Dentist in Al Hudaiba, Dubai and has an experience of 8 years in this field. Dr. Akram Mirgani practices at Luxe Dental Clinic in Al Hudaiba, Dubai. He completed Degree from University Of Medical Science And Technology in 2016 and Bachelor(BSc/BA) from University Of Medical Science And Technology in 2016',
         },
         {
           name: 'Dr. Sampada Bakshi',
-          role: 'General Dentist',
+          role: 'Restorative & Pediatric Dentist',
           experience: '8 Years Experience',
-          bio: 'Known for gentle care and detailed cosmetic consultations that make every visit comfortable and clear.',
+          bio: 'Dr. Sampada Bakshi is a Dentist,Restorative Dentist and Pediatric Dentist in Al Hudaiba, Dubai and has an experience of 8 years in these fields. Dr. Sampada Bakshi practices at Luxe Dental Clinic in Al Hudaiba, Dubai. She completed Bachelor’s of Dental Surgery from Sri Sukhmani Dental College And Hospital in 2018. Some of the services provided by the doctor are: RESTORATIONS,non surgical and surgical extractions,Advanced oral prophylaxis,Root canal treatments and Endodontics etc.',
+        },
+        {
+          name: 'Dr. Mostafa Khalaf',
+          role: 'Periodontist, Prosthodontist & Restorative Dentist',
+          experience: '15 Years Experience',
+          bio: 'Dr. Mostafa Khalaf is a Dentist,Periodontist and Prosthodontist in Al Safouh 1, Dubai and has an experience of 15 years in these fields. Dr. Mostafa Khalaf practices at Imed Dental Clinic in Al Safouh 1, Dubai,Five Cosmetic Poly Clinic in Jumeirah, Dubai and Luxe Dental Clinic in Al Hudaiba, Dubai. He completed Bachelor In Dentist from Ain Shams University Faculty of Medicine in 2008,Bachelor Of Oral And Dental Medicine And Surgery from Medical College- in 2008 and Clinical Master Degree from Ain Shams University in 2015.',
+        },
+        {
+          name: 'Dr. Sehar Banu Sadatulla',
+          role: 'General Dentist',
+          experience: '9 Years Experience',
+          bio: 'Dr. Sehar Banu Sadatulla is a Dentist in Dubai, Dubai and has an experience of 9 years in this field. Dr. Sehar Banu Sadatulla practices at Art Of Teeth General Dental Clinic in Dubai, Dubai,Dr Sai Ganesh Medical Centre L.L.C )Branch( in Al Hudaiba, Dubai and Luxe Dental Clinic in Al Hudaiba, Dubai.',
+        },
+        {
+          name: 'Dr. Mohamed Abosekina',
+          role: 'General Dentist',
+          experience: '11 Years Experience',
+          bio: 'Dr. Mohamed Abosekina is a general dentist practicing in Dubai and originally from Egypt. He earned his Bachelor’s in Oral and Dental Medicine and Surgery from Misr University for Science and Technology in 2014. Dr. Abosekina has worked in Dubai’s leading dental centers, including Luxe Dental Clinic (since 2018) and Dr. Sulaiman Al Habib Medical Center (2021–2025). Fluent in English, he is registered with the Dubai Health Authority and recognized for his comprehensive general dentistry services, patient-focused care, and clear communication—qualities reflected in positive patient engagement and satisfaction.',
         },
       ],
     },
@@ -414,12 +434,14 @@ export const translations = {
       title: 'تعرّف على أطبائنا ذوي الخبرة',
       description:
         'فريق متخصص ملتزم بعلاج دقيق وتواصل واضح ونتائج تدوم.',
+      showMore: 'عرض المزيد',
+      showLess: 'عرض أقل',
       items: [
         {
           name: 'د. تميم تليمات',
-          role: 'أخصائي علاج العصب وزراعة الأسنان',
+          role: 'أخصائي علاج العصب، زراعة الأسنان، التقويم وأمراض اللثة',
           experience: '20 عامًا من الخبرة',
-          bio: 'متخصص في علاج العصب المعقد وترميمات الزراعة بأسلوب هادئ يضع المريض أولًا.',
+          bio: 'حاصل على درجة دكتوراه في جراحة الأسنان بخبرة شاملة في علاج العصب والزراعة والتقويم وأمراض اللثة.',
         },
         {
           name: 'د. أكرم ميرغني',
@@ -429,9 +451,27 @@ export const translations = {
         },
         {
           name: 'د. سمبادا باكشي',
-          role: 'طبيبة أسنان عامة',
+          role: 'أخصائية ترميم وطب أسنان الأطفال',
           experience: '8 أعوام من الخبرة',
-          bio: 'معروفة برعايتها اللطيفة واستشارات التجميل الواضحة التي تجعل كل زيارة مريحة.',
+          bio: 'حاصلة على بكالوريوس جراحة الأسنان، معروفة برعايتها اللطيفة في الترميم وطب أسنان الأطفال.',
+        },
+        {
+          name: 'د. مصطفى خلف',
+          role: 'أخصائي أمراض اللثة، التعويضات السنية والترميم',
+          experience: '15 عامًا من الخبرة',
+          bio: 'حاصل على درجة الماجستير السريري متخصص في صحة اللثة والتعويضات السنية والعلاجات الترميمية.',
+        },
+        {
+          name: 'د. سحر بانو سعد الله',
+          role: 'طبيبة أسنان عامة',
+          experience: '9 أعوام من الخبرة',
+          bio: 'ملتزمة بتواصل واضح ورعاية أسنان شاملة، لضمان شعور كل مريض بالاطمئنان طوال العلاج.',
+        },
+        {
+          name: 'د. محمد أبوسكينة',
+          role: 'طبيب أسنان عام',
+          experience: '11 عامًا من الخبرة',
+          bio: 'حاصل على بكالوريوس طب وجراحة الفم والأسنان بسمعة موثوقة في تقديم رعاية أسنان عامة عالية الجودة.',
         },
       ],
     },

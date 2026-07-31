@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export function SectionHeading({ eyebrow, title, description, light = false, align = 'center' }) {
   const alignment =
-    align === 'left' ? 'items-start text-left' : 'items-center text-center mx-auto'
+    align === 'left' ? 'items-start text-start' : 'items-center text-center mx-auto'
 
   return (
     <motion.div

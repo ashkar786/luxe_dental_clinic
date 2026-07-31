@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Clock3, MapPin, MessageCircle, Phone } from 'lucide-react'
-import { PHONE_DISPLAY, PHONE_TEL, TREATMENTS, WHATSAPP_URL } from '../../data/content'
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from '../../data/content'
+import { useLanguage } from '../../i18n/LanguageContext'
 import { Button } from '../ui/Button'
 import { FadeIn } from '../ui/FadeIn'
 import { SectionHeading } from '../ui/SectionHeading'
@@ -15,8 +16,10 @@ const initialForm = {
 }
 
 export function Contact() {
+  const { t } = useLanguage()
   const [form, setForm] = useState(initialForm)
   const [submitted, setSubmitted] = useState(false)
+  const f = t.contact.form
 
   const onChange = (event) => {
     const { name, value } = event.target
@@ -33,18 +36,16 @@ export function Contact() {
     <section id="contact" className="gradient-section py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Contact"
-          title="Book Your Appointment"
-          description="Reach our Al Hudaiba clinic by phone or WhatsApp, or send a request and our team will confirm your preferred time."
+          eyebrow={t.contact.eyebrow}
+          title={t.contact.title}
+          description={t.contact.description}
         />
 
         <div className="grid gap-8 lg:grid-cols-2">
           <FadeIn>
             <div className="h-full rounded-[2rem] bg-gradient-to-br from-secondary to-primary p-8 text-white shadow-lift md:p-10">
-              <h3 className="font-display text-3xl font-semibold">Visit Luxe Dental Clinic</h3>
-              <p className="mt-3 text-white/75">
-                Premium private dentistry in a calm, modern setting — conveniently located in Al Hudaiba, Dubai.
-              </p>
+              <h3 className="font-display text-3xl font-semibold">{t.contact.visitTitle}</h3>
+              <p className="mt-3 text-white/75">{t.contact.visitText}</p>
 
               <ul className="mt-8 space-y-6">
                 <li className="flex gap-4">
@@ -52,15 +53,15 @@ export function Contact() {
                     <MapPin size={20} aria-hidden="true" />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold tracking-wide text-accent uppercase">Address</p>
+                    <p className="text-sm font-semibold tracking-wide text-accent uppercase">
+                      {t.contact.addressLabel}
+                    </p>
                     <p className="mt-1 leading-relaxed text-white/90">
-                      2B Street,
-                      <br />
-                      Al Hudaiba,
-                      <br />
-                      Dubai,
-                      <br />
-                      United Arab Emirates
+                      {t.contact.addressLines.map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
                     </p>
                   </div>
                 </li>
@@ -69,8 +70,10 @@ export function Contact() {
                     <Phone size={20} aria-hidden="true" />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold tracking-wide text-accent uppercase">Phone</p>
-                    <a href={PHONE_TEL} className="mt-1 block text-lg font-semibold hover:underline">
+                    <p className="text-sm font-semibold tracking-wide text-accent uppercase">
+                      {t.contact.phoneLabel}
+                    </p>
+                    <a href={PHONE_TEL} className="mt-1 block text-lg font-semibold hover:underline" dir="ltr">
                       {PHONE_DISPLAY}
                     </a>
                   </div>
@@ -80,11 +83,13 @@ export function Contact() {
                     <Clock3 size={20} aria-hidden="true" />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold tracking-wide text-accent uppercase">Working Hours</p>
+                    <p className="text-sm font-semibold tracking-wide text-accent uppercase">
+                      {t.contact.hoursLabel}
+                    </p>
                     <div className="mt-1 space-y-1 text-white/90">
-                      <p>Sunday–Thursday: 10:00 AM – 7:00 PM</p>
-                      <p>Saturday: 10:00 AM – 3:00 PM</p>
-                      <p>Closed Friday</p>
+                      {t.contact.hours.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
                     </div>
                   </div>
                 </li>
@@ -93,11 +98,11 @@ export function Contact() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button href={PHONE_TEL} variant="accent">
                   <Phone size={18} />
-                  Call Now
+                  {t.callNow}
                 </Button>
                 <Button href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" variant="outline">
                   <MessageCircle size={18} />
-                  WhatsApp
+                  {t.whatsapp}
                 </Button>
               </div>
             </div>
@@ -107,49 +112,51 @@ export function Contact() {
             <form
               onSubmit={onSubmit}
               className="glass rounded-[2rem] p-6 shadow-lift md:p-8"
-              aria-label="Appointment request form"
+              aria-label={t.contact.title}
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="block sm:col-span-1">
-                  <span className="mb-2 block text-sm font-semibold text-secondary">Name</span>
+                  <span className="mb-2 block text-sm font-semibold text-secondary">{f.name}</span>
                   <input
                     required
                     name="name"
                     value={form.name}
                     onChange={onChange}
-                    placeholder="Your full name"
+                    placeholder={f.namePh}
                     className="w-full rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
                     autoComplete="name"
                   />
                 </label>
                 <label className="block sm:col-span-1">
-                  <span className="mb-2 block text-sm font-semibold text-secondary">Phone</span>
+                  <span className="mb-2 block text-sm font-semibold text-secondary">{f.phone}</span>
                   <input
                     required
                     name="phone"
                     type="tel"
                     value={form.phone}
                     onChange={onChange}
-                    placeholder="+971 ..."
+                    placeholder={f.phonePh}
                     className="w-full rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
                     autoComplete="tel"
+                    dir="ltr"
                   />
                 </label>
                 <label className="block sm:col-span-2">
-                  <span className="mb-2 block text-sm font-semibold text-secondary">Email</span>
+                  <span className="mb-2 block text-sm font-semibold text-secondary">{f.email}</span>
                   <input
                     required
                     name="email"
                     type="email"
                     value={form.email}
                     onChange={onChange}
-                    placeholder="you@email.com"
+                    placeholder={f.emailPh}
                     className="w-full rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
                     autoComplete="email"
+                    dir="ltr"
                   />
                 </label>
                 <label className="block sm:col-span-1">
-                  <span className="mb-2 block text-sm font-semibold text-secondary">Treatment Needed</span>
+                  <span className="mb-2 block text-sm font-semibold text-secondary">{f.treatment}</span>
                   <select
                     required
                     name="treatment"
@@ -158,9 +165,9 @@ export function Contact() {
                     className="w-full rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
                   >
                     <option value="" disabled>
-                      Select treatment
+                      {f.treatmentPh}
                     </option>
-                    {TREATMENTS.map((item) => (
+                    {t.contact.treatments.map((item) => (
                       <option key={item} value={item}>
                         {item}
                       </option>
@@ -168,7 +175,7 @@ export function Contact() {
                   </select>
                 </label>
                 <label className="block sm:col-span-1">
-                  <span className="mb-2 block text-sm font-semibold text-secondary">Preferred Date</span>
+                  <span className="mb-2 block text-sm font-semibold text-secondary">{f.date}</span>
                   <input
                     required
                     name="date"
@@ -176,28 +183,29 @@ export function Contact() {
                     value={form.date}
                     onChange={onChange}
                     className="w-full rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
+                    dir="ltr"
                   />
                 </label>
                 <label className="block sm:col-span-2">
-                  <span className="mb-2 block text-sm font-semibold text-secondary">Message</span>
+                  <span className="mb-2 block text-sm font-semibold text-secondary">{f.message}</span>
                   <textarea
                     name="message"
                     rows={4}
                     value={form.message}
                     onChange={onChange}
-                    placeholder="Tell us briefly about your concern or goals"
+                    placeholder={f.messagePh}
                     className="w-full resize-y rounded-2xl border border-primary/10 bg-white px-4 py-3 text-sm outline-none transition focus:border-accent"
                   />
                 </label>
               </div>
 
               <Button type="submit" className="mt-6 w-full sm:w-auto">
-                Submit Appointment Request
+                {f.submit}
               </Button>
 
               {submitted ? (
                 <p className="mt-4 text-sm font-medium text-primary" role="status">
-                  Thank you. Your request has been received. Our team will contact you shortly to confirm.
+                  {f.success}
                 </p>
               ) : null}
             </form>

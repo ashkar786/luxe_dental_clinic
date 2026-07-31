@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { LanguageProvider, useLanguage } from './i18n/LanguageContext'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './components/sections/Hero'
@@ -16,7 +17,8 @@ import { FloatingWhatsApp } from './components/ui/FloatingWhatsApp'
 import { BackToTop } from './components/ui/BackToTop'
 import { Loader } from './components/ui/Loader'
 
-export default function App() {
+function AppContent() {
+  const { t } = useLanguage()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -28,12 +30,12 @@ export default function App() {
     <>
       <AnimatePresence>{loading ? <Loader key="loader" /> : null}</AnimatePresence>
 
-      <div className={loading ? 'overflow-hidden h-screen' : ''}>
+      <div className={loading ? 'h-screen overflow-hidden' : ''}>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[110] focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:text-secondary"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:start-4 focus:z-[110] focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:text-secondary"
         >
-          Skip to main content
+          {t.skipToContent}
         </a>
         <Navbar />
         <main id="main">
@@ -53,5 +55,13 @@ export default function App() {
         <BackToTop />
       </div>
     </>
+  )
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   )
 }

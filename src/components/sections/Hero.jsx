@@ -1,17 +1,20 @@
 import { motion } from 'framer-motion'
 import { CalendarCheck, MessageCircle, ShieldCheck, Sparkles, Stethoscope, Wrench } from 'lucide-react'
-import { TRUST_BADGES, WHATSAPP_URL } from '../../data/content'
+import { WHATSAPP_URL } from '../../data/content'
+import { useLanguage } from '../../i18n/LanguageContext'
 import { Button } from '../ui/Button'
 
 const badgeIcons = [ShieldCheck, Sparkles, Stethoscope, Wrench]
 
 export function Hero() {
+  const { t } = useLanguage()
+
   return (
     <section id="home" className="relative min-h-[100svh] overflow-hidden">
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=2000&q=80"
-          alt="Modern dental clinic treatment room in Dubai"
+          alt={t.hero.alt}
           className="h-full w-full object-cover"
           fetchPriority="high"
         />
@@ -26,16 +29,16 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="mb-4 font-display text-3xl font-semibold tracking-wide text-white md:text-4xl"
         >
-          Luxe Dental Clinic
+          {t.hero.brand}
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 28 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="max-w-3xl font-display text-5xl leading-[1.05] font-semibold text-white sm:text-6xl lg:text-7xl"
+          className="max-w-3xl font-display text-5xl leading-[1.15] font-semibold text-white sm:text-6xl lg:text-7xl"
         >
-          Your Smile Deserves Expert Care
+          {t.hero.title}
         </motion.h1>
 
         <motion.p
@@ -44,7 +47,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.22 }}
           className="mt-5 max-w-xl text-base leading-relaxed text-white/85 md:text-lg"
         >
-          Modern dentistry with advanced technology and experienced specialists in the heart of Dubai.
+          {t.hero.subtitle}
         </motion.p>
 
         <motion.div
@@ -55,11 +58,11 @@ export function Hero() {
         >
           <Button href="#contact" variant="accent">
             <CalendarCheck size={18} />
-            Book Appointment
+            {t.bookAppointment}
           </Button>
           <Button href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" variant="outline">
             <MessageCircle size={18} />
-            WhatsApp
+            {t.whatsapp}
           </Button>
         </motion.div>
 
@@ -69,7 +72,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.48 }}
           className="mt-12 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4"
         >
-          {TRUST_BADGES.map((badge, index) => {
+          {t.hero.badges.map((badge, index) => {
             const Icon = badgeIcons[index]
             return (
               <li

@@ -1,5 +1,7 @@
 import { Mail, MapPin, Phone } from 'lucide-react'
-import { NAV_LINKS, PHONE_DISPLAY, PHONE_TEL, SERVICES } from '../../data/content'
+import { PHONE_DISPLAY, PHONE_TEL } from '../../data/content'
+import { NAV_HREFS } from '../../i18n/translations'
+import { useLanguage } from '../../i18n/LanguageContext'
 import { Logo } from '../layout/Logo'
 
 const socialLinks = [
@@ -33,15 +35,14 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="bg-secondary text-white" role="contentinfo">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
           <Logo dark={false} />
-          <p className="mt-4 text-sm leading-relaxed text-white/70">
-            Luxe Dental Clinic delivers modern, personalized dentistry in Al Hudaiba, Dubai — from preventive care
-            to implants and cosmetic smile design.
-          </p>
+          <p className="mt-4 text-sm leading-relaxed text-white/70">{t.footer.blurb}</p>
           <div className="mt-5 flex gap-3">
             {socialLinks.map(({ label, href, icon }) => (
               <a
@@ -57,12 +58,12 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-display text-xl font-semibold">Quick Links</h3>
+          <h3 className="font-display text-xl font-semibold">{t.footer.quickLinks}</h3>
           <ul className="mt-4 space-y-2">
-            {NAV_LINKS.map((link) => (
+            {NAV_HREFS.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="text-sm text-white/70 transition hover:text-accent">
-                  {link.label}
+                  {t.nav[link.key]}
                 </a>
               </li>
             ))}
@@ -70,9 +71,9 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-display text-xl font-semibold">Services</h3>
+          <h3 className="font-display text-xl font-semibold">{t.footer.services}</h3>
           <ul className="mt-4 space-y-2">
-            {SERVICES.slice(0, 6).map((service) => (
+            {t.services.items.slice(0, 6).map((service) => (
               <li key={service.title}>
                 <a href="#services" className="text-sm text-white/70 transition hover:text-accent">
                   {service.title}
@@ -83,26 +84,26 @@ export function Footer() {
         </div>
 
         <div>
-          <h3 className="font-display text-xl font-semibold">Working Hours</h3>
+          <h3 className="font-display text-xl font-semibold">{t.footer.workingHours}</h3>
           <ul className="mt-4 space-y-2 text-sm text-white/70">
-            <li>Sunday–Thursday: 10:00 AM – 7:00 PM</li>
-            <li>Saturday: 10:00 AM – 3:00 PM</li>
-            <li>Closed Friday</li>
+            {t.footer.hours.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
           </ul>
           <ul className="mt-6 space-y-3 text-sm text-white/80">
             <li className="flex items-start gap-2">
               <MapPin size={16} className="mt-0.5 text-accent" aria-hidden="true" />
-              2B Street, Al Hudaiba, Dubai, UAE
+              {t.contact.addressLines.join(' ')}
             </li>
             <li className="flex items-center gap-2">
               <Phone size={16} className="text-accent" aria-hidden="true" />
-              <a href={PHONE_TEL} className="hover:text-accent">
+              <a href={PHONE_TEL} className="hover:text-accent" dir="ltr">
                 {PHONE_DISPLAY}
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="text-accent" aria-hidden="true" />
-              <a href="mailto:hello@luxedental.ae" className="hover:text-accent">
+              <a href="mailto:hello@luxedental.ae" className="hover:text-accent" dir="ltr">
                 hello@luxedental.ae
               </a>
             </li>
@@ -112,8 +113,10 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-center text-xs text-white/55 sm:flex-row sm:px-6 lg:px-8">
-          <p>© {new Date().getFullYear()} Luxe Dental Clinic. All rights reserved.</p>
-          <p>Premium dental care in Dubai, UAE</p>
+          <p>
+            © {new Date().getFullYear()} Luxe Dental Clinic. {t.footer.rights}
+          </p>
+          <p>{t.footer.tagline}</p>
         </div>
       </div>
     </footer>
